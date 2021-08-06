@@ -1,0 +1,101 @@
+class budget:
+    def __init__(self, total):
+        self.total = float(total)
+        self.balance = fBudget.balance + eBudget.balance
+    
+    
+class item:
+    def __init__(self, name, cost, quantity):
+        self.name = name
+        self.cost = float(cost)
+        self.quantity = int(quantity)
+        
+class food(item):
+    total = []
+    def __init__(self, name, cost, quantity):
+        item.__init__(self, name, cost, quantity)
+        self.tcost = self.cost * self.quantity
+        
+
+    def add_cost(self, tcost):
+        self.total.append(self.tcost)
+        
+
+class entertainment(item):
+    total = []
+    def __init__(self, name, cost, quantity):
+        item.__init__(self, name, cost, quantity)
+        self.tcost = self.cost * self.quantity
+        self.balance = entertainment.total
+
+    def add_cost(self, tcost):
+        self.total.append(self.tcost)
+        
+class fBudget(budget):
+    def __init__(self, total):
+        self.total = float(total)
+        self.balance = float
+
+    def debit(self):
+        self.balance = self.total - sum(food.total)
+        return self.balance
+    
+class eBudget(budget):
+    def __init__(self, total):
+        self.total = float(total)
+        self.balance = float
+
+    def debit(self):
+        self.balance = self.total - sum(entertainment.total)
+        return self.balance
+
+def setBudget():
+    print("please declare your starting budget")
+    myBudget = budget(input())
+    return myBudget
+
+def setFoodBudget():
+    print("please select the percent of your budget will be dedicated to food")
+    fper = int(input()) / 100
+    fb = fBudget(myBudget * fper)
+    return fb
+
+def setEntertainmentBudget():
+    print("please select the percent of your budget will be dedicated to entertainment")
+    eper = int(input()) / 100
+    eb = eBudget(myBudget * eper)
+    return eb
+
+def add_food():
+    print("input food name, cost and quantity")
+    newFood = food(str(input()), float(input()), int(input()))
+    newFood.add_cost(newFood.tcost)
+    return newFood
+
+def add_entertainment():
+    print("input entertainment name, cost and quantity")
+    newEnt = entertainment(str(input()), float(input()), int(input()))
+    newEnt.add_cost(newEnt.tcost)
+    return newEnt
+
+def main():
+    setBudget()
+    setFoodBudget()
+    setEntertainmentBudget()
+
+    print("you can now add items")
+
+    itemAdd = boolean(input())
+
+    if itemAdd == True:
+        add_food()
+        add_entertainment
+    else:
+        break
+
+    fb.debit()
+    eb.debit()
+    
+    return myBudget.balance, fBudget.balance, eBudget.balance
+
+main()
